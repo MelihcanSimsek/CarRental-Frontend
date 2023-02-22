@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+      <tr class="table-danger">
+        <th scope="col">Customer</th>
+        <th scope="col">Car</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Color</th>
+        <th scope="col">Model</th>
+        <th scope="col">Description</th>
+        <th scope="col">Rent Date</th>
+        <th scope="col">Retun Date</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rental of rentals" class="table-primary">
+            <td>{{rental.customerName}}</td>
+            <td>{{rental.carName}}</td>
+            <td>{{rental.brandName}}</td>
+            <td>{{rental.colorName}}</td>
+            <td>{{rental.modelYear}}</td>
+            <td>{{rental.carDescription}}</td>
+            <td>{{rental.rentDate}}</td>
+            <td>{{rental.returnDate}}</td>
+        </tr>
+    </tbody>
+  </table>

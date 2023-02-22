@@ -1,0 +1,14 @@
+<table class="table">
+    <thead>
+      <tr class="table-warning">
+        <th scope="col">ID</th>
+        <th scope="col">Company</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers" class="table-secondary">
+            <td>{{customer.customerId}}</td>
+            <td>{{customer.companyName}}</td>
+        </tr>
+    </tbody>
+  </table>
