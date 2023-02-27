@@ -1,14 +1,14 @@
-<table class="table">
-    <thead>
-      <tr class="table-danger">
-        <th scope="col">Id</th>
-        <th scope="col">Brand</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let brand of brands" class="table-warning">
-            <td>{{brand.brandId}}</td>
-            <td>{{brand.brandName}}</td>
-        </tr>
-    </tbody>
-  </table>
+<br>
+<ul class="list-group">
+  <li (click)="reset()" [class]="getAllBrandClass()" routerLink="/cars">
+    Brands
+  </li>
+  <li
+    (click)="setCurrentBrand(brand)"
+    *ngFor="let brand of brands"
+    [class]="getCurrentBrandClass(brand)"
+    routerLink="/cars/brand/{{brand.brandId}}"
+  >
+    {{ brand.brandName }}
+  </li>
+</ul>

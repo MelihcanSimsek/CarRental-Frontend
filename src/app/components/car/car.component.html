@@ -8,7 +8,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let car of cars" class="table-secondary">
+        <tr *ngFor="let car of cars" class="table-secondary" routerLink="/cars/{{car.carId}}">
             <td>{{car.carName}}</td>
             <td>{{car.brandName}}</td>
             <td>{{car.colorName}}</td>
