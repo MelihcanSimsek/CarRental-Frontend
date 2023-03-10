@@ -1,0 +1,44 @@
+<hr>
+<form [formGroup]="addFormGroup" class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <label for="rentDate"><h6>Rent Date</h6></label>
+    </div>
+    <div class="col-md-5">
+      <label for="returnDate"><h6>Return Date</h6></label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <input
+        type="text"
+        class="form-control"
+        id="rentDate"
+        aria-describedby="inputRent"
+        placeholder="MM/DD/YYYY"
+        bsDatepicker
+        [minDate]="minDate"
+        [bsConfig]="{ isAnimated: true, containerClass: 'theme-red',adaptivePosition: true }"
+        formControlName="rentDate"
+      />
+    </div>
+    <div class="col-md-5">
+      <input
+        type="text"
+        class="form-control"
+        id="returnDate"
+        aria-describedby="inputReturn"
+        placeholder="MM/DD/YYYY"
+        bsDatepicker 
+        [minDate]="minDate"
+        [bsConfig]="{ isAnimated: true, containerClass: 'theme-red',adaptivePosition: true }"
+        formControlName="returnDate"
+      />
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-success" (click)="checkAndAdd()">Rent Now</button>
+    </div>
+  </div>
+</form>
+

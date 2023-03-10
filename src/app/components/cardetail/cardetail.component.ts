@@ -4,20 +4,23 @@ import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
 import { CardetailService } from 'src/app/services/cardetail.service';
 import { CarimageService } from 'src/app/services/carimage.service';
-
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-cardetail',
   templateUrl: './cardetail.component.html',
   styleUrls: ['./cardetail.component.css'],
 })
 export class CardetailComponent implements OnInit {
-  cars: Car[];
+  cars: Car[]=[];
   imageUrl = 'https://localhost:7103/uploads/images/';
-  carImages:CarImage[];
+  carImages:CarImage[]=[];
   constructor(
     private carDetailService: CardetailService,
     private carimageService: CarimageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastrService:ToastrService,
+    private cartService:CartService
   ) {}
 
   ngOnInit(): void {
@@ -45,5 +48,11 @@ export class CardetailComponent implements OnInit {
   {
     let newPath = this.imageUrl+carImage.imagePath;
     return newPath;
+  }
+
+  addToCart(car:Car)
+  {
+    this.cartService.addToCar(car);
+    this.toastrService.success("Sepete Eklendi",car.brandName+" "+car.carName);
   }
 }

@@ -11,6 +11,7 @@ export class BrandComponent implements OnInit {
 
   brands:Brand[]=[];
   currentBrand:Brand|null;
+  filterText:string="";
   constructor(private brandService:BrandService){}
 
   ngOnInit(): void {
@@ -42,11 +43,11 @@ export class BrandComponent implements OnInit {
   {
     if( !this.currentBrand)
     {
-      return "list-group-item  bg-dark text-center text-light active"
+      return "list-group-item  bg-warning text-center text-dark "
     }
     else
     {
-      return "list-group-item  bg-dark text-center text-light"
+      return "list-group-item  bg-warning text-center text-dark"
     }
   }
 

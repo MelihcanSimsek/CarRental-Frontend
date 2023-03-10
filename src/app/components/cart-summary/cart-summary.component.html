@@ -1,0 +1,23 @@
+<li *ngIf="cartItems.length > 0" class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Cart
+  </a>
+  <ul class="dropdown-menu">
+    <li *ngFor="let cartItem of cartItems">
+      <a class="dropdown-item"
+        ><span class="badge bg-primary">{{ cartItem.quantity }}</span>
+        {{ cartItem.car.brandName }} {{ cartItem.car.carName }}
+        <span (click)="removeFromCart(cartItem.car)" class="badge bg-danger"
+          >Remove</span
+        >
+      </a>
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+    <li><a routerLink="/rentals/add" class="dropdown-item">Go to Rental Detail</a></li>
+  </ul>
+</li>
