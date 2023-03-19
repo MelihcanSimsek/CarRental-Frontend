@@ -1,0 +1,60 @@
+<br>
+<div class="row">
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+            <form [formGroup]="carUpdateForm">
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="colorList">Color</label>
+                        <select class="form-select" id="colorList" formControlName="colorId">         
+                            <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
+                            </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="brandList">Brand</label>
+                        <select class="form-select" id="brandList" formControlName="brandId">         
+                            <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="carName">Model Name</label>
+                            <input type="text" id="carName" class="form-control" formControlName="carName">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="modelYear">Model Year</label>
+                            <input type="text" id="modelYear" class="form-control" formControlName="modelYear">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="dailyPrice">Daily Price</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">$</div>
+                                  </div>
+                                <input type="number" id="dailyPrice" class="form-control" formControlName="dailyPrice">
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="carDescription">Car Description</label>
+                    <textarea  id="carDescription" class="form-control" maxlength="255" formControlName="carDescription" rows="3"></textarea>
+                </div>
+            </form>
+            
+        </div>
+        <div class="container d-flex justify-content-center">
+        <button type="button" class="btn btn-dark me-2" (click)="update()">Update</button>
+        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>   
+        </div>
+    </div>
+
+</div>
+   

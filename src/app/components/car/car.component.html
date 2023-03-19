@@ -24,7 +24,6 @@
       <select class="form-select" [(ngModel)]="colorFilter" aria-label="Default select example">
         <option value="0" selected>Select color</option>
         <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
-        
       </select>
     </div>
 
@@ -47,7 +46,7 @@
 <br>
 
 <div class="row">
-  <div class="card col-md-4 mb-3 me-3" *ngFor="let car of cars |carFilterPipe:carFilterText" style="width: 19rem;">
+  <div class="card col-md-4 mb-3 me-3 shadow p-3 mb-5 bg-white rounded" *ngFor="let car of cars |carFilterPipe:carFilterText" style="width: 19rem;">
     <img class="img-fluid card-img-top size" [src]="getCarImage(car)" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title text-center">{{car.carName}}</h5>
@@ -63,6 +62,10 @@
         <button type="button" class="btn btn-success"  routerLink="/cars/{{car.carId}}">Car Detail</button>
       </div>
     </div>
+    <div class="iconContainer">
+      <fa-icon routerLink="/cars/edit/{{car.carId}}" class="editIcon" [icon]="faedit"></fa-icon>
+    </div>
+    
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/carDetail';
 import { Payment } from 'src/app/models/payment';
 import { Rental } from 'src/app/models/rental';
 import { CardetailService } from 'src/app/services/cardetail.service';
@@ -15,7 +15,7 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class PaymentComponent implements OnInit {
 
-  cars:Car[]=[];
+  cars:CarDetail[]=[];
   currentCarId:number;
   rentDate:Date;
   returnDate:Date;
@@ -99,7 +99,7 @@ export class PaymentComponent implements OnInit {
     
   }
 
-  getCarImage(car:Car):string
+  getCarImage(car:CarDetail):string
   {
     if(car.imagePath == null)
     {

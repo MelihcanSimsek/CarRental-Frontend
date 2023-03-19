@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
 import { CardetailService } from 'src/app/services/cardetail.service';
 import { CarimageService } from 'src/app/services/carimage.service';
@@ -12,7 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cardetail.component.css'],
 })
 export class CardetailComponent implements OnInit {
-  cars: Car[]=[];
+  cars: CarDetail[]=[];
   imageUrl = 'https://localhost:7103/uploads/images/';
   carImages:CarImage[]=[];
   constructor(
@@ -33,7 +33,10 @@ export class CardetailComponent implements OnInit {
   getCar(carId: number) {
     this.carDetailService.getCar(carId).subscribe((response) => {
       this.cars = response.data;
-      
+    },responseError=>{
+
+      console.log(responseError.error)
+
     });
   }
 
@@ -50,7 +53,7 @@ export class CardetailComponent implements OnInit {
     return newPath;
   }
 
-  addToCart(car:Car)
+  addToCart(car:CarDetail)
   {
     this.cartService.addToCar(car);
     this.toastrService.success("Sepete Eklendi",car.brandName+" "+car.carName);

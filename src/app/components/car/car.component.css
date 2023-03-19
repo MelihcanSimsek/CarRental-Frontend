@@ -3,3 +3,23 @@
     height: 160px;
     object-fit: cover!important;
 }
+
+.iconContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.editIcon{
+  
+   
+    visibility: hidden;
+    width: min-content;
+}
+.card:hover .editIcon{
+    visibility: visible;
+}
+
+.editIcon:hover{
+    cursor: pointer;
+}

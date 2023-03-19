@@ -21,6 +21,15 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
 import { RentalAddComponent } from './components/rental-add/rental-add.component'
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaymentComponent } from './components/payment/payment.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarEditComponent } from './components/car-edit/car-edit.component';
+import { ColorEditComponent } from './components/color-edit/color-edit.component';
+import { ColorsEditListComponent } from './components/colors-edit-list/colors-edit-list.component';
+import { BrandsEditListComponent } from './components/brands-edit-list/brands-edit-list.component';
+import { BrandEditComponent } from './components/brand-edit/brand-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +47,14 @@ import { PaymentComponent } from './components/payment/payment.component';
     CartSummaryComponent,
     RentalAddComponent,
     PaymentComponent,
+    CarAddComponent,
+    ColorAddComponent,
+    BrandAddComponent,
+    CarEditComponent,
+    ColorEditComponent,
+    ColorsEditListComponent,
+    BrandsEditListComponent,
+    BrandEditComponent,
   ],
   imports: [
     BsDatepickerModule.forRoot(),
@@ -47,6 +64,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"

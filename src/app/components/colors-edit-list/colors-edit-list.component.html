@@ -1,0 +1,28 @@
+<br />
+
+<div class="row d-flex justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <div class="row">
+          <div *ngFor="let color of colors" class="col-md-3 mb-3">
+            <div
+              class="container-button"
+              routerLink="/colors/edit/{{ color.colorId }}"
+            >
+              {{ color.colorName }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        routerLink="/colors/add"
+      >
+        Add
+      </button>
+    </div>
+  </div>
+</div>

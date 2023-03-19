@@ -1,7 +1,10 @@
 <br />
 <ul class="list-group">
-  <li (click)="reset()" [class]="getAllColorClass()" routerLink="/cars">
+  <li (click)="reset()" [class]="getAllColorClass()">
     Colors
+
+    <button type="button" routerLink="/colors/edit" class="btn btn-danger btn-sm ml-5">Edit</button>
+    
   </li>
   <input
   type="text"

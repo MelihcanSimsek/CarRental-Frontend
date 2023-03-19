@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
-import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/carDetail';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
 import { ToastrService } from 'ngx-toastr';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+
+
+
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  cars: Car[] = [];
+  faedit = faEdit;
+  cars: CarDetail[] = [];
   brands: Brand[] = [];
   colors: Color[] = [];
-  currentCar: Car;
+  currentCar: CarDetail;
   carFilterText: string = "";
   brandFilter:number=0;
   colorFilter:number=0;
@@ -25,7 +30,8 @@ export class CarComponent implements OnInit {
 
   constructor(private carService: CarService, private activatedRoute: ActivatedRoute,
     private brandService: BrandService, private colorService: ColorService,
-    private toastrService:ToastrService) { }
+    private toastrService:ToastrService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.getBrands();
@@ -45,7 +51,7 @@ export class CarComponent implements OnInit {
 
   getCars() {
     this.carService.getCars().subscribe((response) => {
-      this.cars = response.data;
+      this.cars = response.data.sort((a,b) =>  (a.carName > b.carName ? 1 : -1));
     });
   }
 
@@ -61,7 +67,7 @@ export class CarComponent implements OnInit {
     });
   }
 
-  getCurrentCar(car: Car) {
+  getCurrentCar(car: CarDetail) {
     this.currentCar = car;
   }
 
@@ -85,7 +91,7 @@ export class CarComponent implements OnInit {
     })
   }
 
-  getCarImage(car:Car):string
+  getCarImage(car:CarDetail):string
   {
     if(car.imagePath == null)
     {

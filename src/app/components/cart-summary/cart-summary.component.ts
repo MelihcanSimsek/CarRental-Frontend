@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/carDetail';
 import { CartItem } from 'src/app/models/cartItem';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
@@ -23,7 +23,7 @@ export class CartSummaryComponent implements OnInit {
     this.cartItems = this.cartService.list();
   }
 
-  removeFromCart(car:Car){
+  removeFromCart(car:CarDetail){
     this.cartService.removeFromCart(car);
     this.toastService.info("Sepetten Kaldırıldı",car.brandName+" "+car.carName);
   }

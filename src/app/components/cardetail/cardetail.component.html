@@ -1,5 +1,5 @@
 <br>
-<div class="card mb-3" *ngFor="let car of cars">
+<div class="card mb-3 shadow p-3 mb-5 bg-white rounded" *ngFor="let car of cars">
   <div *ngIf="carImages.length > 0" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
     <ol class="carousel-indicators">
       <li data-bs-target="#carouselExampleIndicators" *ngFor="let carImage of carImages; let i=index" [attr.data-bs-slide-to]="i" [class.active]="i==0"></li>
@@ -40,3 +40,5 @@
     <app-rental-add></app-rental-add>
   </div>
 </div>
+
+
