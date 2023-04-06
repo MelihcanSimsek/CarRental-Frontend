@@ -1,44 +1,53 @@
 <br>
-<div class="card mb-3 shadow p-3 mb-5 bg-white rounded" *ngFor="let car of cars">
-  <div *ngIf="carImages.length > 0" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-    <ol class="carousel-indicators">
-      <li data-bs-target="#carouselExampleIndicators" *ngFor="let carImage of carImages; let i=index" [attr.data-bs-slide-to]="i" [class.active]="i==0"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item" *ngFor="let carImage of carImages;let i=index" [class.active]="i==0">
-        <img class="card-img-top fit" [src]="getImagePath(carImage)" alt="Card image ">
-      </div>
-     
-    </div>
-    <a class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only"></span>
-    </a>
-    <a class="carousel-control-next" data-bs-target="#carouselExampleIndicators" role="button" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only"></span>
-    </a>
+<div class="row">
+  <div class="col-md-3">
+    <app-brand></app-brand>
+    <app-color></app-color>   
   </div>
-  
-  <div class="card-body">
-     <h4 class="card-title text-center">{{ car.brandName }}</h4>
-     <h5 class="text-center">{{ car.carName }}</h5>
-    <ul class="list-group list-group-flush text-center text-bolder">
-      <li class="list-group-item">
-        <strong>Model Year</strong> : {{ car.modelYear }}
-      </li>
-      <li class="list-group-item">
-        <strong>Color</strong> : {{ car.colorName }}
-      </li>
-      <li class="list-group-item">
-        <strong>Description</strong> : {{ car.carDescription }}
-      </li>
-      <li class="list-group-item">
-        <strong>Daily Price</strong> : {{ car.dailyPrice  | currency }}
-      </li>
-    </ul>
-    <app-rental-add></app-rental-add>
+  <div class="col-md-9">
+    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded" *ngFor="let car of cars">
+      <div *ngIf="carImages.length > 0" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <ol class="carousel-indicators">
+          <li data-bs-target="#carouselExampleIndicators" *ngFor="let carImage of carImages; let i=index" [attr.data-bs-slide-to]="i" [class.active]="i==0"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let carImage of carImages;let i=index" [class.active]="i==0">
+            <img class="card-img-top fit" [src]="getImagePath(carImage)" alt="Card image ">
+          </div>
+         
+        </div>
+        <a class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only"></span>
+        </a>
+        <a class="carousel-control-next" data-bs-target="#carouselExampleIndicators" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only"></span>
+        </a>
+      </div>
+      
+      <div class="card-body">
+         <h4 class="card-title text-center">{{ car.brandName }}</h4>
+         <h5 class="text-center">{{ car.carName }}</h5>
+        <ul class="list-group list-group-flush text-center text-bolder">
+          <li class="list-group-item">
+            <strong>Model Year</strong> : {{ car.modelYear }}
+          </li>
+          <li class="list-group-item">
+            <strong>Color</strong> : {{ car.colorName }}
+          </li>
+          <li class="list-group-item">
+            <strong>Description</strong> : {{ car.carDescription }}
+          </li>
+          <li class="list-group-item">
+            <strong>Daily Price</strong> : {{ car.dailyPrice  | currency }}
+          </li>
+        </ul>
+        <app-rental-add></app-rental-add>
+      </div>
+    </div>
   </div>
 </div>
+
 
 

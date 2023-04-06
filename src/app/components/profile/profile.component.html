@@ -1,0 +1,55 @@
+<br>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="profileForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" formControlName="firstName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" formControlName="lastName">
+                            </div>
+                        </div>
+                    </div>
+                   <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" class="form-control" id="currentPassword" formControlName="currentPassword">
+                        </div>
+                    </div>
+                   </div>
+                   <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" class="form-control" id="newPassword" formControlName="newPassword">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="repeatPassword">Repeat Password</label>
+                            <input type="password" class="form-control" id="repeatPassword" formControlName="repeatPassword">
+                        </div>
+                    </div>
+                   </div>
+                </form>
+        
+                <button type="button" class="btn btn-primary btn-block" (click)="update()">Update Profile</button>
+            </div>
+        </div>
+    </div>
+</div>

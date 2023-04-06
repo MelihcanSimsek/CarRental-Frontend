@@ -1,71 +1,79 @@
 <br>
-
-  <div class="row">
-    <div class="col-md-3">
-      <input
-      type="text"
-      [(ngModel)]="carFilterText"
-      class="form-control"
-      id="car-filter-text"
-      placeholder="Enter car model"
-      />
-    </div>
-   
-
-    <div class="col-md-4">
-      <select class="form-select" [(ngModel)]="brandFilter" aria-label="Default select example">
-        <option value="0" selected>Select Brand</option>
-        <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
-        
-      </select>
-    </div>
-
-    <div class="col-md-4">
-      <select class="form-select" [(ngModel)]="colorFilter" aria-label="Default select example">
-        <option value="0" selected>Select color</option>
-        <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
-      </select>
-    </div>
-
-    <div class="col-md-1">
-      <button (click)="getCarsByBrandAndColor(brandFilter,colorFilter)" type="button" class="btn btn-success">Filter</button>
-    </div>
-
+<div class="row">
+  <div class="col-md-3">
+    <app-brand></app-brand>
+    <app-color></app-color>   
   </div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-3">
+        <input
+        type="text"
+        [(ngModel)]="carFilterText"
+        class="form-control"
+        id="car-filter-text"
+        placeholder="Enter car model"
+        />
+      </div>
+     
   
+      <div class="col-md-4">
+        <select class="form-select" [(ngModel)]="brandFilter" aria-label="Default select example">
+          <option value="0" selected>Select Brand</option>
+          <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
+          
+        </select>
+      </div>
+  
+      <div class="col-md-4">
+        <select class="form-select" [(ngModel)]="colorFilter" aria-label="Default select example">
+          <option value="0" selected>Select color</option>
+          <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
+        </select>
+      </div>
+  
+      <div class="col-md-1">
+        <button (click)="getCarsByBrandAndColor(brandFilter,colorFilter)" type="button" class="btn btn-success">Filter</button>
+      </div>
+  
+    </div>
+    
+    <br>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="carFilterText.length > 0" class="alert alert-success">
+          {{carFilterText}} aradınız.
+          <br>
+        </div>
+      </div>
+    </div>
   <br>
   
   <div class="row">
-    <div class="col-md-12">
-      <div *ngIf="carFilterText.length > 0" class="alert alert-success">
-        {{carFilterText}} aradınız.
+    <div class="card col-md-4 mb-3 me-3 shadow p-3 mb-5 bg-white rounded" *ngFor="let car of cars |carFilterPipe:carFilterText" style="width: 19rem;">
+      <img class="img-fluid card-img-top size" [src]="getCarImage(car)" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{car.carName}}</h5>
+        <h6 class="text-center">{{car.brandName}}</h6>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item disabled"><strong>Model Year:</strong> {{car.modelYear}}</li>
+          <li class="list-group-item disabled"><strong>Color:</strong> {{car.colorName}}</li>
+          <li class="list-group-item disabled"><strong>Daily Price:</strong> {{car.dailyPrice | currency}}</li>
+        </ul>
         <br>
+        <div class="row">
+        <div class="col-md-12 text-center">
+          <button type="button" class="btn btn-success"  routerLink="/cars/{{car.carId}}">Car Detail</button>
+        </div>
+      </div>
+      <div class="iconContainer">
+        <fa-icon routerLink="/cars/edit/{{car.carId}}" class="editIcon" [icon]="faedit"></fa-icon>
+      </div>
+      
       </div>
     </div>
   </div>
-<br>
-
-<div class="row">
-  <div class="card col-md-4 mb-3 me-3 shadow p-3 mb-5 bg-white rounded" *ngFor="let car of cars |carFilterPipe:carFilterText" style="width: 19rem;">
-    <img class="img-fluid card-img-top size" [src]="getCarImage(car)" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title text-center">{{car.carName}}</h5>
-      <h6 class="text-center">{{car.brandName}}</h6>
-      <ul class="list-group list-group-flush text-center">
-        <li class="list-group-item disabled"><strong>Model Year:</strong> {{car.modelYear}}</li>
-        <li class="list-group-item disabled"><strong>Color:</strong> {{car.colorName}}</li>
-        <li class="list-group-item disabled"><strong>Daily Price:</strong> {{car.dailyPrice | currency}}</li>
-      </ul>
-      <br>
-      <div class="row">
-      <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-success"  routerLink="/cars/{{car.carId}}">Car Detail</button>
-      </div>
-    </div>
-    <div class="iconContainer">
-      <fa-icon routerLink="/cars/edit/{{car.carId}}" class="editIcon" [icon]="faedit"></fa-icon>
-    </div>
-    
-    </div>
   </div>
 </div>
+  

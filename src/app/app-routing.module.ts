@@ -10,9 +10,12 @@ import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorEditComponent } from './components/color-edit/color-edit.component';
 import { ColorsEditListComponent } from './components/colors-edit-list/colors-edit-list.component';
+import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {path:"",component:RentalComponent},
@@ -28,7 +31,10 @@ const routes: Routes = [
   {path:"colors/edit/:colorId",component:ColorEditComponent},
   {path:"colors/edit",component:ColorsEditListComponent},
   {path:"brands/edit",component:BrandsEditListComponent},
-  {path:"brands/edit/:brandId",component:BrandEditComponent} 
+  {path:"brands/edit/:brandId",component:BrandEditComponent},
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
+  {path:"profile",component:ProfileComponent} 
 
 ];
 

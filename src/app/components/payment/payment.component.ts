@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/carDetail';
 import { Payment } from 'src/app/models/payment';
 import { Rental } from 'src/app/models/rental';
+import { UserModel } from 'src/app/models/userModel';
+import { AuthService } from 'src/app/services/auth.service';
 import { CardetailService } from 'src/app/services/cardetail.service';
 import { PaymentService } from 'src/app/services/payment.service';
 import { RentalService } from 'src/app/services/rental.service';
@@ -26,14 +28,15 @@ export class PaymentComponent implements OnInit {
   cvvNumber:string="";
   fullName:string="";
   cardDate:string="";
-
+  userModel:UserModel;
 
   constructor(private activatedRoute:ActivatedRoute,
     private toastrService:ToastrService,
     private carDetailService:CardetailService,
     private rentalService:RentalService,
     private router:Router,
-    private paymentSevice:PaymentService){}
+    private paymentSevice:PaymentService,
+    private authService:AuthService){}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -60,7 +63,7 @@ export class PaymentComponent implements OnInit {
     rental.carId = this.currentCarId;
     rental.rentDate = this.rentDate;
     rental.returnDate = this.returnDate;
-    rental.customerId =1;
+    rental.userId =this.userModel.id;
 
     this.rentalService.addRental(rental).subscribe(response=>{
       this.router.navigate(["/"]);
@@ -75,11 +78,11 @@ export class PaymentComponent implements OnInit {
     {
       let payment:Payment = Object.assign({});
       let tempDate = this.cardDate.split("/");
-    
+      this.userModel = this.authService.getUserInfo();
     payment.cardNumber=this.cardNumber;
     payment.cvv=this.cvvNumber;
     payment.fullName = this.fullName;
-    payment.customerId=1;
+    payment.customerId=this.userModel.id;
     payment.expiryMonth=Number(tempDate[0]);
     payment.expiryYear = Number(tempDate[1]);
     this.paymentSevice.pay(payment).subscribe(response=>{

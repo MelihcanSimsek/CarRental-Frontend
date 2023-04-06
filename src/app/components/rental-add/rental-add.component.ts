@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DATE } from 'ngx-bootstrap/chronos/units/constants';
 import { ToastrService } from 'ngx-toastr';
 import { Rental } from 'src/app/models/rental';
+import { UserModel } from 'src/app/models/userModel';
+import { AuthService } from 'src/app/services/auth.service';
 import { RentalService } from 'src/app/services/rental.service';
 
 
@@ -18,13 +20,14 @@ export class RentalAddComponent implements OnInit {
   rentDate: Date;
   returnDate: Date;
   minDate:Date;
-
+  userModel:UserModel;
 
   constructor(private formBuilder: FormBuilder,
     private rentalService: RentalService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private authService:AuthService) { }
 
 
   ngOnInit(): void {
@@ -52,8 +55,9 @@ export class RentalAddComponent implements OnInit {
   checkAndAdd() {
     if (this.addFormGroup.valid) {
       let rental: Rental = Object.assign({}, this.addFormGroup.value);
+      this.userModel = this.authService.getUserInfo();
       rental.carId = this.currentCarId;
-      rental.customerId = 1;
+      rental.userId = this.userModel.id;
       this.rentalService.rulesForAdding(rental).subscribe(response => {
         this.toastrService.success(response.message, "Ödeme İşlemine Yönlendiriliyor");
         this.router.navigate(['/payment/' + this.currentCarId + '/' + this.calculateDiff(rental.rentDate, rental.returnDate) + '/' + rental.rentDate + '/' + rental.returnDate]);

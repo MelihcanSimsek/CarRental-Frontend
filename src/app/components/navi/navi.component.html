@@ -12,15 +12,29 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/car/add">Car Add</a>
           </li>
-         <app-cart-summary></app-cart-summary>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-dark" type="submit">Search</button>
-        </form>
+
+        <div class="button-group me-3" *ngIf="isAuthenticated()">
+          <button type="button" class="btn btn-outline-dark me-3" routerLink="/login">Login</button>
+          <button type="button" class="btn btn-outline-dark" routerLink="/register">Sign Up</button>
+        </div>
+
+        <div class="profile-container me-5" *ngIf="!isAuthenticated()">
+          <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{userInfo?.firstName}} {{userInfo?.lastName}}
+            </button>
+            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" routerLink="/profile" >Edit Profile</a>
+              <a class="dropdown-item" (click)="logout()" >Logout</a>
+            </div>
+          </div>
+        </div>
+          
+        
+      
       </div>
-    </div>
+        
+      </div>
+    
   </nav>
